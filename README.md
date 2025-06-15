@@ -23,7 +23,7 @@ pip3 install -r requirements.txt
 
 ## 配置说明
 
-1. 编辑`config.json`文件配置要监控的Twitter/X账户：
+1. 编辑`tweet_monitor_config.json`文件配置要监控的Twitter/X账户：
 ```json
 {
     "accounts": [
@@ -32,7 +32,11 @@ pip3 install -r requirements.txt
             "last_tweet_id": null
         }
     ],
-    "check_interval": 300
+    "check_interval": 300,
+    "notification": {
+        "sound": "Ping",
+        "icon_path": "twitter_icon.png"
+    }
 }
 ```
 
@@ -84,6 +88,21 @@ pip3 install -r requirements.txt
 tail -f logs/tweet_monitor.log
 ```
 
+### 测试通知系统
+
+在开始监控之前，你可以使用测试脚本来验证通知系统是否正常工作：
+
+```bash
+# 运行通知测试
+python3 test_notification.py
+```
+
+这将触发一个测试通知，帮助你：
+- 确认通知系统配置正确
+- 验证通知显示效果
+- 测试声音和图标设置
+- 检查通知点击功能
+
 ### 桌面通知
 
 当检测到新推文时，系统会显示桌面通知，包含：
@@ -92,6 +111,20 @@ tail -f logs/tweet_monitor.log
 - 发布时间
 
 点击通知可以直接打开推文链接。
+
+#### macOS用户增强通知
+
+macOS用户可以安装terminal-notifier获得更好的通知体验：
+
+```bash
+# 使用Homebrew安装
+brew install terminal-notifier
+```
+
+安装后，系统将自动使用terminal-notifier提供更美观的通知，包括：
+- 自定义图标
+- 点击直接打开Twitter/X网页
+- 系统声音提示
 
 ## 故障排除
 
@@ -125,6 +158,13 @@ chmod +x tweet_monitor.py
 3. 确保所有依赖都已正确安装
 
 ## 更新日志
+
+### v1.1.0
+- 改进通知系统：优化terminal-notifier配置
+- 添加更好的错误处理机制
+- 改进通知图标和声音设置
+- 增强通知层级，提供多种通知方式的备选方案
+- 添加通知测试脚本，方便验证通知系统
 
 ### v1.0.0
 - 初始版本发布
