@@ -1,0 +1,86 @@
+{
+    "accounts": [
+        {
+            "username": "Reuters",
+            "last_tweet_id": null
+        },
+        {
+            "username": "WSJ",
+            "last_tweet_id": null
+        },
+        {
+            "username": "business",
+            "last_tweet_id": null
+        },
+        {
+            "username": "FinancialTimes",
+            "last_tweet_id": null
+        },
+        {
+            "username": "TheEconomist",
+            "last_tweet_id": null
+        },
+        {
+            "username": "CNBCnow",
+            "last_tweet_id": null
+        },
+        {
+            "username": "Forbes",
+            "last_tweet_id": null
+        },
+        {
+            "username": "BusinessInsider",
+            "last_tweet_id": null
+        },
+        {
+            "username": "MarketWatch",
+            "last_tweet_id": null
+        },
+        {
+            "username": "YahooFinance",
+            "last_tweet_id": null
+        },
+        {
+            "username": "FoxBusiness",
+            "last_tweet_id": null
+        },
+        {
+            "username": "CNNBusiness",
+            "last_tweet_id": null
+        },
+        {
+            "username": "CNBC",
+            "last_tweet_id": null
+        },
+        {
+            "username": "MorganStanley",
+            "last_tweet_id": null
+        },
+        {
+            "username": "GoldmanSachs",
+            "last_tweet_id": null
+        },
+        {
+            "username": "jpmorgan",
+            "last_tweet_id": null
+        },
+        {
+            "username": "blackrock",
+            "last_tweet_id": null
+        },
+        {
+            "username": "Vanguard_Group",
+            "last_tweet_id": null
+        },
+        {
+            "username": "Fidelity",
+            "last_tweet_id": null
+        },
+        {
+            "username": "CharlesSchwab",
+            "last_tweet_id": null
+        }
+    ],
+    "check_interval": 300,
+    "notification_timeout": 10
+}

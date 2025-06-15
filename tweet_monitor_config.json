@@ -1,0 +1,86 @@
+{
+    "accounts": [
+        {
+            "username": "Reuters",
+            "last_tweet_id": 1585802723382927360
+        },
+        {
+            "username": "WSJ",
+            "last_tweet_id": 1934111166080414011
+        },
+        {
+            "username": "business",
+            "last_tweet_id": 1934165657773342796
+        },
+        {
+            "username": "FinancialTimes",
+            "last_tweet_id": 1599678751402786816
+        },
+        {
+            "username": "TheEconomist",
+            "last_tweet_id": 1934164042706190489
+        },
+        {
+            "username": "CNBCnow",
+            "last_tweet_id": 1390023742194061312
+        },
+        {
+            "username": "Forbes",
+            "last_tweet_id": 1934158970844852460
+        },
+        {
+            "username": "BusinessInsider",
+            "last_tweet_id": 1313284069074046981
+        },
+        {
+            "username": "MarketWatch",
+            "last_tweet_id": 1933993727363514665
+        },
+        {
+            "username": "YahooFinance",
+            "last_tweet_id": 1934152971673067769
+        },
+        {
+            "username": "FoxBusiness",
+            "last_tweet_id": 1045416196135415810
+        },
+        {
+            "username": "CNNBusiness",
+            "last_tweet_id": null
+        },
+        {
+            "username": "CNBC",
+            "last_tweet_id": null
+        },
+        {
+            "username": "MorganStanley",
+            "last_tweet_id": null
+        },
+        {
+            "username": "GoldmanSachs",
+            "last_tweet_id": null
+        },
+        {
+            "username": "jpmorgan",
+            "last_tweet_id": null
+        },
+        {
+            "username": "blackrock",
+            "last_tweet_id": null
+        },
+        {
+            "username": "Vanguard_Group",
+            "last_tweet_id": null
+        },
+        {
+            "username": "Fidelity",
+            "last_tweet_id": null
+        },
+        {
+            "username": "CharlesSchwab",
+            "last_tweet_id": null
+        }
+    ],
+    "check_interval": 300,
+    "notification_timeout": 10
+}
