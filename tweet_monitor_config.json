@@ -6,11 +6,11 @@
         },
         {
             "username": "WSJ",
-            "last_tweet_id": 1934111166080414011
+            "last_tweet_id": 1934240286864974297
         },
         {
             "username": "business",
-            "last_tweet_id": 1934165657773342796
+            "last_tweet_id": 1934239481164406858
         },
         {
             "username": "FinancialTimes",
@@ -18,7 +18,7 @@
         },
         {
             "username": "TheEconomist",
-            "last_tweet_id": 1934164042706190489
+            "last_tweet_id": 1934240744232874138
         },
         {
             "username": "CNBCnow",
@@ -26,19 +26,19 @@
         },
         {
             "username": "Forbes",
-            "last_tweet_id": 1934158970844852460
+            "last_tweet_id": 1934237166197960706
         },
         {
             "username": "BusinessInsider",
-            "last_tweet_id": 1313284069074046981
+            "last_tweet_id": 1315858568520794113
         },
         {
             "username": "MarketWatch",
-            "last_tweet_id": 1933993727363514665
+            "last_tweet_id": 1934194504145187183
         },
         {
             "username": "YahooFinance",
-            "last_tweet_id": 1934152971673067769
+            "last_tweet_id": 1934237451318395193
         },
         {
             "username": "FoxBusiness",
@@ -46,39 +46,39 @@
         },
         {
             "username": "CNNBusiness",
-            "last_tweet_id": null
+            "last_tweet_id": 1448588665685520385
         },
         {
             "username": "CNBC",
-            "last_tweet_id": null
+            "last_tweet_id": 1934225582415310965
         },
         {
             "username": "MorganStanley",
-            "last_tweet_id": null
+            "last_tweet_id": 1932120279305568677
         },
         {
             "username": "GoldmanSachs",
-            "last_tweet_id": null
+            "last_tweet_id": 1934234530400849993
         },
         {
             "username": "jpmorgan",
-            "last_tweet_id": null
+            "last_tweet_id": 1932876380380729365
         },
         {
             "username": "blackrock",
-            "last_tweet_id": null
+            "last_tweet_id": 1933596289712992735
         },
         {
             "username": "Vanguard_Group",
-            "last_tweet_id": null
+            "last_tweet_id": 1933509660104888467
         },
         {
             "username": "Fidelity",
-            "last_tweet_id": null
+            "last_tweet_id": 1724778264248328308
         },
         {
             "username": "CharlesSchwab",
-            "last_tweet_id": null
+            "last_tweet_id": 1874818193346203996
         }
     ],
     "check_interval": 300,

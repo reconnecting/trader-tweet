@@ -60,25 +60,60 @@ def show_notification(title, message):
                 except Exception as e:
                     logger.error(f"语音提示失败: {e}")
                 
-                # 3. 尝试使用AppleScript显示通知
-                logger.info("尝试使用AppleScript显示通知...")
+                # 3. 尝试使用terminal-notifier显示通知
+                logger.info("检查是否安装了terminal-notifier...")
                 try:
-                    # 构建AppleScript命令，添加声音
-                    script = f'''
-                    display notification "{safe_message}" with title "{safe_title}" subtitle "测试通知" sound name "Sosumi"
-                    '''
-                    
-                    # 执行AppleScript
-                    subprocess.run(['osascript', '-e', script], check=True)
-                    logger.info("使用AppleScript显示通知成功")
+                    # 检查是否安装了terminal-notifier
+                    result = subprocess.run(['which', 'terminal-notifier'], 
+                                           check=False, capture_output=True, text=True)
+                    if result.returncode == 0:
+                        logger.info("检测到terminal-notifier已安装")
+                        
+                        # 构建terminal-notifier命令
+                        notifier_cmd = [
+                            'terminal-notifier',
+                            '-title', safe_title,
+                            '-subtitle', '测试通知',
+                            '-message', safe_message,
+                            '-sound', 'default',
+                            '-open', 'https://twitter.com',  # 测试URL
+                            '-activate', 'com.apple.Safari',
+                            '-contentImage', '/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/BookmarkIcon.icns',  # 使用系统内置的书签图标
+                            '-appIcon', '/Applications/Safari.app/Contents/Resources/Safari.icns'  # 使用Safari图标
+                        ]
+                        
+                        # 执行通知命令
+                        subprocess.run(notifier_cmd, check=True)
+                        logger.info("使用terminal-notifier显示通知成功")
+                    else:
+                        logger.info("未检测到terminal-notifier，将使用AppleScript作为备选方案")
+                        # 使用AppleScript弹窗
+                        popup_script = f'''
+                        tell application "System Events"
+                            activate
+                            display dialog "{safe_message}" buttons {{"关闭", "查看测试链接"}} default button "查看测试链接" with title "{safe_title}" with icon caution
+                            if button returned of result is "查看测试链接" then
+                                tell application "Safari" to open location "https://twitter.com"
+                            end if
+                        end tell
+                        '''
+                        
+                        # 执行AppleScript弹窗
+                        subprocess.run(['osascript', '-e', popup_script], check=True)
+                        logger.info("使用AppleScript弹窗成功")
+                        logger.info("提示：安装terminal-notifier可以支持更好的通知体验")
+                        logger.info("可以使用以下命令安装：brew install terminal-notifier")
                 except Exception as e:
                     logger.error(f"使用AppleScript显示通知失败: {e}")
                 
-                # 4. 尝试使用直接的通知中心API
-                logger.info("尝试使用NSUserNotification显示通知...")
+                # 4. 尝试使用直接的通知中心API（仅当PyObjC已安装时）
                 try:
-                    # 使用Python的objc桥接来直接访问macOS的通知中心API
-                    script = '''
+                    # 先检查是否可以导入Foundation模块
+                    import importlib.util
+                    if importlib.util.find_spec("Foundation") is not None:
+                        logger.info("尝试使用NSUserNotification显示通知...")
+                        # 使用Python的objc桥接来直接访问macOS的通知中心API
+                        script = '''
 import Foundation
 import objc
 
@@ -94,15 +129,17 @@ notification.setSoundName_("NSUserNotificationDefaultSoundName")
 center = NSUserNotificationCenter.defaultUserNotificationCenter()
 center.deliverNotification_(notification)
 '''.format(safe_title, safe_message)
-                    
-                    # 将脚本写入临时文件并执行
-                    with open('/tmp/notification_script.py', 'w') as f:
-                        f.write(script)
-                    
-                    subprocess.run(['python3', '/tmp/notification_script.py'], check=True)
-                    logger.info("使用NSUserNotification显示通知成功")
+                        
+                        # 将脚本写入临时文件并执行
+                        with open('/tmp/notification_script.py', 'w') as f:
+                            f.write(script)
+                        
+                        subprocess.run(['python3', '/tmp/notification_script.py'], check=True)
+                        logger.info("使用NSUserNotification显示通知成功")
+                    else:
+                        logger.info("跳过NSUserNotification通知：未安装PyObjC")
                 except Exception as e:
-                    logger.error(f"使用NSUserNotification显示通知失败: {e}")
+                    logger.info(f"跳过NSUserNotification通知：{e}")
                 
                 logger.info(f"已尝试使用macOS多种方法显示通知: {title}")
                 return

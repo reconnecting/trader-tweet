@@ -680,15 +680,6 @@ class TweetMonitor:
                     except Exception as e:
                         logger.error(f"语音提示失败: {e}")
                     
-                    # 3. 使用语音提示（不需要通知权限）
-                    logger.info("尝试使用语音提示...")
-                    try:
-                        voice_message = f"新推文提醒，{safe_title}"
-                        subprocess.run(['say', voice_message], check=True)
-                        logger.info("语音提示成功")
-                    except Exception as e:
-                        logger.error(f"语音提示失败: {e}")
-                    
                     # 4. 尝试使用terminal-notifier显示通知（如果已安装）
                     terminal_notifier_installed = False
                     if tweet_url:  # 只有当有URL时才尝试使用terminal-notifier
@@ -701,14 +692,17 @@ class TweetMonitor:
                                 terminal_notifier_installed = True
                                 logger.info("检测到terminal-notifier已安装")
                                 
-                                # 构建terminal-notifier命令
+                                # 构建terminal-notifier命令，添加contentImage参数以显示大图标
                                 notifier_cmd = [
                                     'terminal-notifier',
                                     '-title', safe_title,
                                     '-subtitle', '推文监控器',
                                     '-message', safe_message,
-                                    '-sound', 'Sosumi',
-                                    '-open', tweet_url
+                                    '-sound', 'default',
+                                    '-open', tweet_url,
+                                    '-activate', 'com.apple.Safari',  # 激活Safari而不是编辑器
+                                    '-contentImage', '/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/BookmarkIcon.icns',  # 使用系统内置的书签图标
+                                    '-appIcon', '/Applications/Safari.app/Contents/Resources/Safari.icns'  # 使用Safari图标
                                 ]
                                 
                                 # 执行通知命令
@@ -721,24 +715,41 @@ class TweetMonitor:
                             logger.error(f"使用terminal-notifier显示通知失败: {e}")
                             terminal_notifier_installed = False
                     
-                    # 5. 如果terminal-notifier未安装或失败，使用AppleScript作为备选方案
+                    # 5. 如果terminal-notifier未安装或失败，直接使用AppleScript弹窗而不是通知
                     if not terminal_notifier_installed:
-                        logger.info("尝试使用AppleScript显示通知...")
+                        logger.info("尝试使用AppleScript弹窗...")
                         try:
-                            # 构建AppleScript命令，添加声音
-                            script = f'''
-                            display notification "{safe_message}" with title "{safe_title}" subtitle "推文监控器" sound name "Sosumi"
-                            '''
+                            # 直接使用弹窗而不是通知，避免点击通知的问题
+                            if tweet_url:
+                                popup_script = f'''
+                                tell application "System Events"
+                                    activate
+                                    display dialog "{safe_message}" buttons {{"关闭", "查看推文"}} default button "查看推文" with title "{safe_title}" with icon caution
+                                    if button returned of result is "查看推文" then
+                                        tell application "Safari" to open location "{tweet_url}"
+                                    end if
+                                end tell
+                                '''
+                            else:
+                                popup_script = f'''
+                                tell application "System Events"
+                                    activate
+                                    display dialog "{safe_message}" buttons {{"确定"}} default button "确定" with title "{safe_title}" with icon caution
+                                end tell
+                                '''
                             
-                            # 执行AppleScript
-                            subprocess.run(['osascript', '-e', script], check=True)
-                            logger.info("使用AppleScript显示通知成功")
+                            # 执行AppleScript弹窗
+                            subprocess.run(['osascript', '-e', popup_script], check=True)
+                            logger.info("使用AppleScript弹窗成功")
                             
                             # 如果有URL，记录链接并提示用户安装terminal-notifier
                             if tweet_url:
                                 logger.info(f"通知链接: {tweet_url}")  # 记录通知链接
-                                logger.info("提示：安装terminal-notifier可以支持点击通知打开URL功能")
+                                logger.info("提示：安装terminal-notifier可以支持更好的通知体验")
                                 logger.info("可以使用以下命令安装：brew install terminal-notifier")
+                                
+                                # 同时在终端中显示链接，方便用户直接复制
+                                print(f"\n新推文链接: {tweet_url}\n")
                         except Exception as e:
                             logger.error(f"使用AppleScript显示通知失败: {e}")
                     
