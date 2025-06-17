@@ -2,55 +2,55 @@
     "accounts": [
         {
             "username": "Reuters",
-            "last_tweet_id": 1585802723382927360
+            "last_tweet_id": null
         },
         {
             "username": "WSJ",
-            "last_tweet_id": 1934240286864974297
+            "last_tweet_id": 1934575271174197474
         },
         {
             "username": "business",
-            "last_tweet_id": 1934239481164406858
+            "last_tweet_id": 1934576698281853019
         },
         {
             "username": "FinancialTimes",
-            "last_tweet_id": 1599678751402786816
+            "last_tweet_id": null
         },
         {
             "username": "TheEconomist",
-            "last_tweet_id": 1934240744232874138
+            "last_tweet_id": 1934597853407490087
         },
         {
             "username": "CNBCnow",
-            "last_tweet_id": 1390023742194061312
+            "last_tweet_id": null
         },
         {
             "username": "Forbes",
-            "last_tweet_id": 1934237166197960706
+            "last_tweet_id": 1934577463411044439
         },
         {
             "username": "BusinessInsider",
-            "last_tweet_id": 1315858568520794113
+            "last_tweet_id": null
         },
         {
             "username": "MarketWatch",
-            "last_tweet_id": 1934194504145187183
+            "last_tweet_id": 1934577863828668606
         },
         {
             "username": "YahooFinance",
-            "last_tweet_id": 1934237451318395193
+            "last_tweet_id": 1934534836644954578
         },
         {
             "username": "FoxBusiness",
-            "last_tweet_id": 1045416196135415810
+            "last_tweet_id": null
         },
         {
             "username": "CNNBusiness",
-            "last_tweet_id": 1448588665685520385
+            "last_tweet_id": null
         },
         {
             "username": "CNBC",
-            "last_tweet_id": 1934225582415310965
+            "last_tweet_id": 1934574863835943086
         },
         {
             "username": "MorganStanley",
@@ -74,7 +74,7 @@
         },
         {
             "username": "Fidelity",
-            "last_tweet_id": 1724778264248328308
+            "last_tweet_id": null
         },
         {
             "username": "CharlesSchwab",
