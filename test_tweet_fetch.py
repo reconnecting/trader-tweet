@@ -28,7 +28,7 @@ def test_fetch_tweets():
     monitor = TweetMonitor()
     
     # 测试账户列表
-    test_accounts = ["Reuters", "WSJ", "CNBC"]
+    test_accounts = ["myfxtrader"]
     
     for username in test_accounts:
         logger.info(f"尝试获取 @{username} 的推文...")

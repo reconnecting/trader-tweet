@@ -1,6 +1,12 @@
 {
     "accounts": [
         {
+            "username": "myfxtrader",
+            "last_tweet_id": null
+        }
+    ],
+    "disabled_accounts": [
+        {
             "username": "Reuters",
             "last_tweet_id": null
         },
@@ -22,10 +28,6 @@
         },
         {
             "username": "CNBCnow",
-            "last_tweet_id": null
-        },
-        {
-            "username": "Forbes",
             "last_tweet_id": null
         },
         {
